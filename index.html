@@ -31,6 +31,7 @@
         
         .content {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -46,13 +47,42 @@
             width: 100%;
             margin: 40px 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            align-self: flex-end;
+            margin-right: 50px;
         }
-
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+            align-self: center;
+        }
+        
+        .logo {
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        .headline {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
         /* Add responsive styles */
         @media (max-width: 768px) {
             .form-container {
                 padding: 20px;
-                margin: 0 15px;
+                margin: 20px 15px;
+                align-self: center;
+            }
+            
+            .headline {
+                font-size: 1.8rem;
             }
         }
     </style>
@@ -64,6 +94,10 @@
     
     <!-- Content container -->
     <div class="content">
+        <div class="logo-container">
+            <img src="logo.svg" alt="Logo" class="logo">
+            <h1 class="headline">The best last minute deals on Cape Town's ultimate city escapes</h1>
+        </div>
         <div class="form-container">
             <iframe data-tally-src="https://tally.so/embed/3EaA6q?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1946" frameborder="0" marginheight="0" marginwidth="0" title="City to Silence."></iframe><script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
         </div>
