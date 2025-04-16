@@ -109,6 +109,33 @@
         
         // Change background every 6 seconds
         setInterval(changeBackground, 6000);
+        
+        // Adjust thank you message container size
+        window.addEventListener('message', function(e) {
+            // Check if the message is from Tally
+            if (e.data && typeof e.data === 'object' && e.data.type === 'tally-form:loaded') {
+                // Add event listener for form submission
+                window.addEventListener('message', function(event) {
+                    if (event.data && typeof event.data === 'object' && 
+                        (event.data.type === 'tally-form:submitted' || 
+                         event.data.type === 'tally-form:redirect')) {
+                        // Get the iframe
+                        const iframe = document.querySelector('iframe[data-tally-src]');
+                        if (iframe) {
+                            // Adjust iframe height for thank you page
+                            iframe.style.height = '400px';
+                            
+                            // Adjust form container size
+                            const formContainer = document.querySelector('.form-container');
+                            if (formContainer) {
+                                formContainer.style.maxWidth = '500px';
+                                formContainer.style.padding = '25px';
+                            }
+                        }
+                    }
+                }, false);
+            }
+        }, false);
     </script>
 </body>
 </html>
