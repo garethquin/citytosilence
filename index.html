@@ -1,48 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Full Background with Tally Form</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      background-image: url('background.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      font-family: sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Landing Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            width: 100%;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 1s ease-in-out;
+        }
+        
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 100%;
+        }
 
-    .form-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 600px;
-      background-color: rgba(255, 255, 255, 0.85);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
-  </style>
+        /* Add responsive styles */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 20px;
+                margin: 0 15px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="form-container">
-    <iframe 
-      src="https://tally.so/embed/YOUR-TALLY-FORM-ID?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" 
-      title="Tally Form"
-      loading="lazy">
-    </iframe>
-  </div>
+    <!-- Background images container -->
+    <div id="bg1" class="bg-container" style="opacity: 1;"></div>
+    <div id="bg2" class="bg-container" style="opacity: 0;"></div>
+    
+    <!-- Content container -->
+    <div class="content">
+        <div class="form-container">
+            <!-- Tally.so Form Embed -->
+            <iframe
+                src="YOUR_TALLY_FORM_URL_HERE"
+                width="100%"
+                height="500"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+                title="Tally Form"
+            ></iframe>
+        </div>
+    </div>
+
+    <script>
+        // Array of background images - replace with your own image URLs
+        const backgroundImages = [
+            'https://images.unsplash.com/photo-1506744038136-46273834b3fb',
+            'https://images.unsplash.com/photo-1511300636408-a63a89df3482', 
+            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4',
+            'https://images.unsplash.com/photo-1498954562214-c3c7a9326a6a'
+        ];
+        
+        // Get the background container elements
+        const bg1 = document.getElementById('bg1');
+        const bg2 = document.getElementById('bg2');
+        
+        // Set initial background
+        bg1.style.backgroundImage = `url(${backgroundImages[0]})`;
+        
+        let currentBg = 1; // Track which background is currently visible
+        let currentIndex = 0; // Track which image is currently shown
+        
+        // Function to change background
+        function changeBackground() {
+            // Update image index
+            currentIndex = (currentIndex + 1) % backgroundImages.length;
+            
+            // Determine which background to update and show
+            if (currentBg === 1) {
+                bg2.style.backgroundImage = `url(${backgroundImages[currentIndex]})`;
+                bg2.style.opacity = '1';
+                bg1.style.opacity = '0';
+                currentBg = 2;
+            } else {
+                bg1.style.backgroundImage = `url(${backgroundImages[currentIndex]})`;
+                bg1.style.opacity = '1';
+                bg2.style.opacity = '0';
+                currentBg = 1;
+            }
+        }
+        
+        // Change background every 6 seconds
+        setInterval(changeBackground, 6000);
+    </script>
 </body>
 </html>
