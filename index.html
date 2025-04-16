@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Landing Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,7 +17,7 @@
         body, html {
             height: 100%;
             width: 100%;
-            font-family: 'Arial', sans-serif;
+            font-family: 'Inter', sans-serif;
         }
         
         .bg-container {
@@ -110,7 +113,7 @@
     <!-- Content container -->
     <div class="content">
         <div class="left-side">
-            <img src="logo.svg" alt="Logo" class="logo">
+            <img src="logo.svg" alt="Logo" class="logo" onerror="this.onerror=null; this.src='logo.png'; if(this.src.includes('logo.png')) this.onerror=function(){this.style.display='none';}">
             <h1 class="headline">The best last minute deals on Cape Town's ultimate city escapes</h1>
         </div>
         <div class="right-side">
