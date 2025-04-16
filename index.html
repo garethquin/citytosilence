@@ -31,58 +31,73 @@
         
         .content {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            overflow-y: auto;
+        }
+        
+        .left-side {
+            width: 50%;
+            display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            padding: 40px 20px;
-            overflow-y: auto;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .right-side {
+            width: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
         }
         
         .form-container {
             background-color: rgba(255, 255, 255, 0.9);
             padding: 30px;
             border-radius: 10px;
-            max-width: 600px;
+            max-width: 90%;
             width: 100%;
-            margin: 40px 0;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            align-self: flex-end;
-            margin-right: 50px;
-        }
-        
-        .logo-container {
-            text-align: center;
-            margin-bottom: 20px;
-            align-self: center;
         }
         
         .logo {
-            max-width: 200px;
+            max-width: 250px;
             height: auto;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
         }
         
         .headline {
-            font-size: 2.5rem;
-            font-weight: bold;
+            font-size: 3rem;
+            font-weight: 900;
             color: white;
             text-align: center;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            margin: 0 auto 30px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+            margin: 0;
+            line-height: 1.2;
         }
         
         /* Add responsive styles */
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 20px;
-                margin: 20px 15px;
-                align-self: center;
+        @media (max-width: 900px) {
+            .content {
+                flex-direction: column;
+            }
+            
+            .left-side, .right-side {
+                width: 100%;
+                padding: 30px 20px;
             }
             
             .headline {
-                font-size: 1.8rem;
+                font-size: 2.2rem;
+            }
+            
+            .left-side {
+                padding-bottom: 0;
             }
         }
     </style>
@@ -94,12 +109,14 @@
     
     <!-- Content container -->
     <div class="content">
-        <div class="logo-container">
+        <div class="left-side">
             <img src="logo.svg" alt="Logo" class="logo">
             <h1 class="headline">The best last minute deals on Cape Town's ultimate city escapes</h1>
         </div>
-        <div class="form-container">
-            <iframe data-tally-src="https://tally.so/embed/3EaA6q?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1946" frameborder="0" marginheight="0" marginwidth="0" title="City to Silence."></iframe><script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+        <div class="right-side">
+            <div class="form-container">
+                <iframe data-tally-src="https://tally.so/embed/3EaA6q?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="1946" frameborder="0" marginheight="0" marginwidth="0" title="City to Silence."></iframe><script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+            </div>
         </div>
     </div>
 
