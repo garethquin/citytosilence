@@ -85,6 +85,12 @@
         }
         
         /* Add responsive styles */
+        @media (max-width: 1200px) {
+            .headline {
+                font-size: 3.8rem;
+            }
+        }
+        
         @media (max-width: 900px) {
             .content {
                 flex-direction: column;
@@ -93,14 +99,43 @@
             .left-side, .right-side {
                 width: 100%;
                 padding: 30px 20px;
+                height: auto;
+                min-height: 50vh;
             }
             
             .headline {
-                font-size: 2.2rem;
+                font-size: 3.2rem;
+                padding: 0 15px;
             }
             
-            .left-side {
-                padding-bottom: 0;
+            .form-container {
+                max-width: 500px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .logo {
+                max-width: 250px;
+                margin-bottom: 30px;
+            }
+            
+            .headline {
+                font-size: 2.5rem;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .headline {
+                font-size: 2rem;
+            }
+            
+            .logo {
+                max-width: 200px;
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -190,6 +225,49 @@
                 }, false);
             }
         }, false);
+        
+        // Handle responsive layout adjustments
+        function handleResize() {
+            const width = window.innerWidth;
+            
+            // Get elements
+            const contentEl = document.querySelector('.content');
+            const formContainer = document.querySelector('.form-container');
+            const leftSide = document.querySelector('.left-side');
+            const rightSide = document.querySelector('.right-side');
+            
+            // Apply specific adjustments based on width
+            if (width <= 900) {
+                // Mobile layout
+                if (contentEl) contentEl.style.flexDirection = 'column';
+                if (leftSide) {
+                    leftSide.style.width = '100%';
+                    leftSide.style.height = 'auto';
+                    leftSide.style.minHeight = '50vh';
+                }
+                if (rightSide) {
+                    rightSide.style.width = '100%';
+                    rightSide.style.height = 'auto';
+                }
+            } else {
+                // Desktop layout
+                if (contentEl) contentEl.style.flexDirection = 'row';
+                if (leftSide) {
+                    leftSide.style.width = '50%';
+                    leftSide.style.height = '100vh';
+                }
+                if (rightSide) {
+                    rightSide.style.width = '50%';
+                    rightSide.style.height = '100vh';
+                }
+            }
+        }
+        
+        // Initial call
+        handleResize();
+        
+        // Add resize listener
+        window.addEventListener('resize', handleResize);
     </script>
 </body>
 </html>
